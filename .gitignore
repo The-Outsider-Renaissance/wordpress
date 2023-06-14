@@ -1,0 +1,5 @@
+.DS_Store
+/wordpress/wp-content/uploads/*
+!/wordpress/wp-content/uploads/.keep
+/wordpress/wp-content/upgrade
+**__pycache__**

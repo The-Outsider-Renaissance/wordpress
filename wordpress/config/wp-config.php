@@ -1,0 +1,13 @@
+<?php
+// Set custom wp-config.php settings in this file 
+define( 'OIDC_CLIENT_ID', getenv( 'NITRO_ID_CLIENT_ID' ) );
+define( 'OIDC_CLIENT_SECRET', getenv( 'NITRO_ID_CLIENT_SECRET' ) );
+define( 'OIDC_LOGIN_TYPE', getenv( 'NITRO_ID_LOGIN_TYPE' ) );
+define( 'OIDC_CLIENT_SCOPE', getenv( 'NITRO_ID_SCOPE' ) );
+define( 'OIDC_ENDPOINT_LOGIN_URL', getenv( 'NITRO_ID_LOGIN_ENDPOINT' ) );
+define( 'OIDC_ENDPOINT_TOKEN_URL', getenv( 'NITRO_ID_TOKEN_ENDPOINT' ) );
+define( 'OIDC_ENDPOINT_USERINFO_URL', getenv( 'NITRO_ID_USERINFO_ENDPOINT' ) );
+define( 'CLOUDFLARE_ACCOUNT_ID', getenv( 'NITROSITE_CLOUDFLARE_ACCOUNT_ID' ) );
+define( 'CLOUDFLARE_API_KEY', getenv( 'NITROSITE_CLOUDFLARE_API_KEY' ) );
+define( 'CLOUDFLARE_EMAIL', getenv( 'NITROSITE_CLOUDFLARE_EMAIL' ) );
+define( 'CLOUDFLARE_HEAP_ANALYTICS_OFF', getenv( 'NITROSITE_CLOUDFLARE_HEAP_ANALYTICS_OFF' ) );

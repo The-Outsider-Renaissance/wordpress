@@ -1,0 +1,37 @@
+---
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: api
+    depends_on:
+      - db
+    ports: ["8000:80"]
+  db:
+    image: mysql:8.0.28
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: always
+    cap_add:
+      - SYS_NICE
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    ports: ["3307:3306"]
+  wordpress:
+    build:
+      context: wordpress
+    depends_on:
+      - db
+    volumes:
+      - ./wordpress/config:/app/config
+      - ./wordpress/wp-content:/app/web/wp-content 
+    environment:
+      DISALLOW_FILE_MODS: "false"
+      DB_HOST: db
+      DB_USER: root
+      DB_NAME: wordpress_interview
+    ports: ["8080:8080"]
+
+volumes:
+  mysql_data:

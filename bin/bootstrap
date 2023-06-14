@@ -1,0 +1,37 @@
+#!/bin/bash
+
+docker compose down
+
+echo "Starting db service..."
+docker compose up db --build -d
+
+mysql_ready() {
+  docker compose exec db mysql -u root -e 'select 1;' > /dev/null
+}
+
+api_ready() {
+  docker compose exec api curl localhost > /dev/null
+}
+
+until [ $(mysql_ready)$? -eq 0 ]
+do
+  echo "Waiting for MySQL to be ready..."
+  sleep 5
+done
+
+echo "Ensuring databases..."
+docker compose exec db mysql -u root -e "create database if not exists wordpress_interview; create database if not exists user_api;"
+
+echo "Starting API service..."
+docker compose up api --build -d
+
+until [ $(api_ready)$? -eq 0 ]
+do
+  echo "Waiting for API to be ready..."
+  sleep 5
+done
+
+echo "Stubbing users..."
+cat ./api/stub_users.sql | docker compose exec -T db mysql -u root user_api
+
+docker compose down
