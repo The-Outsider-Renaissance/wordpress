@@ -1,0 +1,16 @@
+{
+    "apiVersion": 2,
+    "title": "Team",
+    "name": "custom-plugin/team",
+    "category": "widgets",
+    "icon": "universal-access-alt",
+    "editorScript": "file:./team.js",
+    "editorStyle": "file:./assets/editor-styles.css",
+    "style": "file:./assets/styles.css",
+    "attributes": {
+    	"customAttributeExample": {
+	        "type": "number",
+	        "default":-1
+	    }
+	}
+}

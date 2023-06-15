@@ -8,3 +8,9 @@
  * Requires PHP: 7.x
  * Tested up to: 6.x
  */
+
+add_action( 'init', function() {
+    register_block_type( dirname( __FILE__ ) . '/team' );
+} );
+
+// TODO: Add action to query backend User API and return response
