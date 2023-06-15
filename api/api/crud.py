@@ -8,8 +8,13 @@ def get_user(db: Session, user_id: int):
     return db.query(models.User).filter(models.User.id == user_id).first()
 
 
-def get_users(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(models.User).offset(skip).limit(limit).all()
+def get_users(db: Session, limit: int = 100, is_active: bool | None = None):
+    query = db.query(models.User)
+
+    if is_active is not None:
+        query = query.filter(models.User.is_active == is_active)
+
+    return query.limit(limit).all()
 
 
 def create_user(db: Session, user: schemas.User):

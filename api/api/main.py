@@ -34,8 +34,10 @@ def edit_user(user_id: int, user: schemas.UpdateUser, db: Session = Depends(get_
 
 
 @app.get("/users/", response_model=list[schemas.User])
-def read_users(limit: int = 100, db: Session = Depends(get_db)):
-    users = crud.get_users(db, limit=limit)
+def read_users(
+    limit: int = 100, is_active: bool | None = None, db: Session = Depends(get_db)
+):
+    users = crud.get_users(db, limit=limit, is_active=is_active)
     return users
 
 
