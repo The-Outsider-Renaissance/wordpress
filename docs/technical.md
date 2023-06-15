@@ -11,4 +11,4 @@ Modify the existing code in `wordpress/wp-content/plugins/custom-plugin` in orde
 
 ## Example Mockup
 
-![Example](../img/example.png)
+![Example](img/example.png)
