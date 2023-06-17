@@ -4,11 +4,16 @@ function ( blocks, editor, element, blockEditor, components ) {
   const useState = element.useState;
   const useBlockProps = blockEditor.useBlockProps;
 
+  async function loadUsers(setUserResult) {
+    // TODO: Complete API call to ajaxurl + action
+  }
+
   function buildTeamMembers(userData) {
     // TODO: Helper function to build nested elements from Team
   }
 
   function Team() {
+    const _state = useState(null), userResult = _state[0], setUserResult = _state[1];
     // TODO: Build root element
     // Hint: Chain `el` method calls.
     // Mmay look something like: return(el('div', null, buildTeamMembers()))
